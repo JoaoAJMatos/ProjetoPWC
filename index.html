@@ -13,6 +13,8 @@
 
       <link rel="icon" href="img/logo.svg" type="image/x-icon">
       <title>Weather Now</title>
+
+      <script type="module" src="scripts/main_page.js"></script>
 </head>
 <body>
       <header>
@@ -28,6 +30,11 @@
                         </button>
                         <div class="collapse navbar-collapse" id="navbarNav">
                               <ul class="navbar-nav ms-auto">
+                                    <li class="nav-item">
+                                          <div class="switch-button">
+                                                
+                                          </div>
+                                    </li>
                                     <li class="nav-item">
                                           <a class="nav-link active" aria-current="page" href="index.html">Home</a>
                                     </li>
@@ -60,9 +67,9 @@
                   <div class="flex-row gap-5 d-flex justify-content-center">
                         <div class="col-sm-12 col-md-6 col-lg-4">
                               <div class="card">
-                                    <div class="card-body">
+                                    <div class="card-body"  id="city0">
                                           <h5 class="card-title text-center">Cidade</h5>
-                                          <p class="card-text text-center">Clima</p>
+                                          <img src="" alt="" class="card-img">
                                           <p class="card-text text-center">Temperatura</p>
                                           <p class="card-text text-center">Humidade</p>
                                           <p class="card-text text-center">Vento</p>
@@ -72,9 +79,9 @@
                         </div>
                         <div class="col-sm-12 col-md-6 col-lg-4">
                               <div class="card">
-                                    <div class="card-body">
-                                          <h5 class="card-title text-center">Cidade</h5>
-                                          <p class="card-text text-center">Clima</p>
+                                    <div class="card-body"  id="city1">
+                                          <h5 id="city1" class="card-title text-center">Cidade</h5>
+                                          <img src="" alt="" class="card-img">
                                           <p class="card-text text-center">Temperatura</p>
                                           <p class="card-text text-center">Humidade</p>
                                           <p class="card-text text-center">Vento</p>
@@ -84,9 +91,9 @@
                         </div>
                         <div class="col-sm-12 col-md-6 col-lg-4">
                               <div class="card">
-                                    <div class="card-body">
+                                    <div class="card-body"  id="city2">
                                           <h5 class="card-title text-center">Cidade</h5>
-                                          <p class="card-text text-center">Clima</p>
+                                          <img src="" alt="" class="card-img">
                                           <p class="card-text text-center">Temperatura</p>
                                           <p class="card-text text-center">Humidade</p>
                                           <p class="card-text text-center">Vento</p>
@@ -98,9 +105,9 @@
                   <div class="flex-row gap-5 d-flex justify-content-center">
                         <div class="col-sm-12 col-md-6 col-lg-4">
                               <div class="card">
-                                    <div class="card-body">
+                                    <div class="card-body"  id="city3">
                                           <h5 class="card-title text-center">Cidade</h5>
-                                          <p class="card-text text-center">Clima</p>
+                                          <img src="" alt="" class="card-img">
                                           <p class="card-text text-center">Temperatura</p>
                                           <p class="card-text text-center">Humidade</p>
                                           <p class="card-text text-center">Vento</p>
@@ -110,9 +117,9 @@
                         </div>
                         <div class="col-sm-12 col-md-6 col-lg-4">
                               <div class="card">
-                                    <div class="card-body">
+                                    <div class="card-body"  id="city4">
                                           <h5 class="card-title text-center">Cidade</h5>
-                                          <p class="card-text text-center">Clima</p>
+                                          <img src="" alt="" class="card-img">
                                           <p class="card-text text-center">Temperatura</p>
                                           <p class="card-text text-center">Humidade</p>
                                           <p class="card-text text-center">Vento</p>
@@ -122,9 +129,9 @@
                         </div>
                         <div class="col-sm-12 col-md-6 col-lg-4">
                               <div class="card">
-                                    <div class="card-body">
+                                    <div class="card-body"  id="city5">
                                           <h5 class="card-title text-center">Cidade</h5>
-                                          <p class="card-text text-center">Clima</p>
+                                          <img src="" alt="" class="card-img">
                                           <p class="card-text text-center">Temperatura</p>
                                           <p class="card-text text-center">Humidade</p>
                                           <p class="card-text text-center">Vento</p>
@@ -138,7 +145,5 @@
       
       <!-- Bootsrap JS -->
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
-      
-      <script src="scripts/main.js" crossorigin="anonymous"></script>
 </body>
 </html>
