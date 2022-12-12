@@ -1,5 +1,7 @@
 import WeatherInterface  from './weather_interface.js';
-import { getWeatherIcon } from './util.js';
+import AppState from './state.js';
+import { getWeatherIcon, convertKelvinToCel } from './util.js';
+
 
 // A list of some cities which can be randomly selected to appear on the main page
 const cityList = ['London', 'New York', 'Paris',
@@ -44,32 +46,58 @@ const getRandomCities = (cityCount) => {
 }
 
 
-const populateWeathercards = (cities, weatherInterface) => {
+const setTemperature = (element, appState, temperature) => {
+      if (appState.getUnits() === 'metric') {
+            element.innerHTML = `${convertKelvinToCel(temperature)} °C`;
+            return;
+      }
+      
+      element.innerHTML = `${temperature} °F`;
+}
+
+
+const setMinMaxTemperature = (element, appState, maxMin) => {
+      if (appState.getUnits() === 'metric') {
+            element.innerHTML = `${convertKelvinToCel(maxMin[0])} °C / ${convertKelvinToCel(maxMin[1])} °C`;
+            return;
+      }
+
+      element.innerHTML = `${maxMin[0]} °F / ${maxMin[1]} °F`;
+}
+
+
+const populateWeatherCards = (cities, weatherInterface, appState) => {
       let index = 0, weatherData;
 
       cities.forEach(city => {
             // Get the weather data for the current city
             weatherData = weatherInterface.getWeatherNow(city);
 
-            // Populate the weather card fields
+            // Get the elements for the current city card
             const cityCard = document.getElementById(`city${index}`);
+            const cityCardTitle = cityCard.children[0];
+            const cityCardIcon = cityCard.children[1];
+            const cityCardTemperature = cityCard.children[2];
+            const cityCardMaxMin = cityCard.children[4];
 
             // Set the city name
-            const cityCardTitle = cityCard.children[0];
             cityCardTitle.innerHTML = city;
 
             // Set the weather icon
-            const cityCardIcon = cityCard.children[1];
             cityCardIcon.src = getWeatherIcon(weatherData);
             cityCardIcon.width = 50;
             cityCardIcon.height = 50;
 
             // Set the temperature
-            const cityCardTemperature = cityCard.children[2];
             WeatherInterface.getTemperature(weatherData).then(temperature => {
-                  cityCardTemperature.innerHTML = temperature;
+                  setTemperature(cityCardTemperature, appState, temperature);
             });
-                  
+
+            // Set the max and min temperature
+            WeatherInterface.getMaxMinTemp(weatherData).then(maxMin => {
+                  setMinMaxTemperature(cityCardMaxMin, appState, maxMin);
+            });
+            
             index++;
       });
 }
@@ -83,6 +111,9 @@ document.addEventListener('DOMContentLoaded', () => {
       // Create a new weather interface
       const weatherInterface = new WeatherInterface();
 
+      // Create a new app state which will load app's settings the from local storage
+      const appState = new AppState();
+
       // Populate the weather cards with data from the random cities
-      populateWeathercards(randomCities, weatherInterface);
+      populateWeatherCards(randomCities, weatherInterface, appState);
 });
