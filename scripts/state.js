@@ -22,6 +22,11 @@ class AppState {
             if (!this.state.favourites) {
                   this.state.favourites = [];
             }
+
+            // If the user's current search is not set, set it to an empty string
+            if (!this.state.currentSearch) {
+                  this.state.currentSearch = "";
+            }
       }
 
 
@@ -51,6 +56,15 @@ class AppState {
       // Add a city to the list of favorites
       setFavorite(cityName) {
             this.state.favourites.push(cityName);
+      }
+
+
+      // Sets a city as the current search
+      // When clicking the "detalhes" button, the current search will be
+      // stored in the AppState. Other pages can then access the current
+      // search and use it to fetch the weather data for the specified city.
+      setSearch(cityName) {
+            this.state.currentSearch = cityName;
       }
 
 

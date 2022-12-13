@@ -116,4 +116,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Populate the weather cards with data from the random cities
       populateWeatherCards(randomCities, weatherInterface, appState);
+
+      // Set the IDs of the details buttons to the city names
+      for (let i = 0; i < randomCities.length; i++) {
+            document.getElementById(`detalhes${i}`).id = randomCities[i];
+      }
 });
