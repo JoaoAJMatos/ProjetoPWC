@@ -120,5 +120,15 @@ document.addEventListener('DOMContentLoaded', () => {
       // Set the IDs of the details buttons to the city names
       for (let i = 0; i < randomCities.length; i++) {
             document.getElementById(`detalhes${i}`).id = randomCities[i];
+
+            // Add an event listener to each details button
+            document.getElementById(randomCities[i]).addEventListener('click', () => {
+                  // Store the city name in the app state
+                  appState.setSearch(randomCities[i]);
+                  appState.saveState();
+
+                  // Redirect to the details page
+                  window.location.href = 'views/details.html';
+            });
       }
 });
