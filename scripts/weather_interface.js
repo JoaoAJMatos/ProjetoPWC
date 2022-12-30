@@ -34,6 +34,32 @@ class WeatherInterface {
       static getHumidity(data) {
             return data.then(data => data["main"]["humidity"]);
       }
+
+      static getWindInfo(data) {
+            return data.then(data => {
+                  const windSpeed = data["wind"]["speed"];
+                  const windDirection = data["wind"]["deg"];
+
+                  return [windSpeed, windDirection];
+            });
+      }
+
+      static getAtmosphericPressure(data) {
+            return data.then(data => data["main"]["pressure"]);
+      }
+
+      static getClouds(data) {
+            return data.then(data => data["clouds"]["all"]);
+      }
+
+      static getCityCoords(data) {
+            return data.then(data => {
+                  const lat = data["coord"]["lat"];
+                  const long = data["coord"]["lon"];
+
+                  return [lat, long];
+            });
+      }
 }
 
 export default WeatherInterface;
