@@ -2,15 +2,15 @@
 const weatherIcons = {
       '01d': 'cloudy-windy.svg',
       '02d': 'cloudy-night.svg',
-      '03d': 'cloudy-sunny.svg',
-      'Clouds': 'cloudy.svg',
-      'Rain': 'raining.svg',
-      '10d': 'snowing.svg',
+      'Clouds': 'img/weather_icons/cloudy-sunny.svg',
+      'Fog': 'img/weather_icons/cloudy.svg',
+      'Rain': 'img/weather_icons/raining.svg',
+      'Snow': 'img/weather_icons/snowing.svg',
       'day': 'img/weather_icons/sunny.svg',
-      'clear': 'img/weather_icons/sunny.svg',
-      'night': 'night.svg',
-      '50d': 'thunderstorm.svg'
-}
+      'Clear': 'img/weather_icons/sunny.svg',
+      'night': 'img/weather_icons/night.svg',
+      'Thunderstorm': 'img/weather_icons/thunderstorm.svg'
+};
 
 // Only these 3 countries OFFICIALLY use the imperial system
 const countriesUsingImperial = ['United States', 'Liberia', 'Myanmar'];
@@ -54,21 +54,22 @@ const convertCelToFar = (temp) => {
 /* ============== WEATHER UTILITIES ============== */
 
 // Returns the weather icon for a given weather condition
-const getWeatherIcon = (weatherAPIResp) => {
-      // Get the promise result
-      weatherAPIResp = weatherAPIResp.then(data => data);
+const placeWeatherIcon = (weatherAPIResp, element) => {
+      let weatherState, datetime, sunset;
 
-      const weatherState = weatherAPIResp["weather"];
-      const dateTime = weatherAPIResp["dt"];
-      const sunset = weatherAPIResp["sys"];
+      weatherAPIResp = weatherAPIResp.then(data => {
+            datetime = timestampToDate(data["dt"]);
+            sunset = timestampToDate(data["sys"]["sunset"]);
+            weatherState = data["weather"][0]["main"];
 
-      if (weatherState in weatherIcons)
-            return weatherIcons[weatherState];
-
-      if (dateTime > sunset)
-            return weatherIcons["night"];
-
-      return weatherIcons["day"];
+            if (datetime > sunset)
+                  element.src = weatherIcons['night'];
+            
+            if (weatherState !== undefined && weatherState in weatherIcons)
+                  element.src = weatherIcons[weatherState];
+            else
+                  element.src = weatherIcons['day'];
+      });
 }
 
 
@@ -112,4 +113,4 @@ const getUserMetric = (lat, long) => {
 }
 
 
-export { timestampToDate, convertFarToCel, convertCelToFar, convertKelvinToCel, convertKelvinToFar, getWeatherIcon, getUserLongLat, getUserCountry, getUserMetric };
+export { timestampToDate, convertFarToCel, convertCelToFar, convertKelvinToCel, convertKelvinToFar, placeWeatherIcon, getUserLongLat, getUserCountry, getUserMetric };
