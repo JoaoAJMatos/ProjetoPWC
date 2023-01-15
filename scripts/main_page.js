@@ -1,6 +1,6 @@
 import WeatherInterface  from './weather_interface.js';
 import AppState from './state.js';
-import { getWeatherIcon, convertKelvinToCel } from './util.js';
+import { placeWeatherIcon, convertKelvinToCel } from './util.js';
 
 
 // A list of some cities which can be randomly selected to appear on the main page
@@ -84,7 +84,7 @@ const populateWeatherCards = (cities, weatherInterface, appState) => {
             cityCardTitle.innerHTML = city;
 
             // Set the weather icon
-            cityCardIcon.src = getWeatherIcon(weatherData);
+            placeWeatherIcon(weatherData, cityCardIcon);
             cityCardIcon.width = 50;
             cityCardIcon.height = 50;
 
