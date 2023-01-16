@@ -59,6 +59,12 @@ class AppState {
       }
 
 
+      // Remove a city from the list of favorites
+      removeFavorite(cityName) {
+            this.state.favourites = this.state.favourites.filter(city => city !== cityName);
+      }
+
+
       // Sets a city as the current search
       // When clicking the "detalhes" button, the current search will be
       // stored in the AppState. Other pages can then access the current

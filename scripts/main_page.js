@@ -120,6 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
       // Set the IDs of the details buttons to the city names
       for (let i = 0; i < randomCities.length; i++) {
             document.getElementById(`detalhes${i}`).id = randomCities[i];
+            document.getElementById(`fav${i}`).id = `fav_${randomCities[i]}`;
 
             // Add an event listener to each details button
             document.getElementById(randomCities[i]).addEventListener('click', () => {
@@ -129,6 +130,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
                   // Redirect to the details page
                   window.location.href = 'views/details.html';
+            });
+
+            document.getElementById(`fav_${randomCities[i]}`).addEventListener('click', () => {
+                  // Add/Remove the city to the favorites list
+                  const favs = appState.getFavorites();
+                  if (favs.includes(randomCities[i])) {
+                        appState.removeFavorite(randomCities[i]);
+                        document.getElementById(`fav_${randomCities[i]}`).innerHTML = 'Favorito';
+                  } else {
+                        appState.setFavorite(randomCities[i]);
+                        document.getElementById(`fav_${randomCities[i]}`).innerHTML = 'Anular favorito';
+                  }
+
+                  // Save the app state
+                  appState.saveState();
             });
       }
 });
