@@ -121,6 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
       for (let i = 0; i < randomCities.length; i++) {
             document.getElementById(`detalhes${i}`).id = randomCities[i];
             document.getElementById(`fav${i}`).id = `fav_${randomCities[i]}`;
+            document.getElementById(`forecast${i}`).id = `forecast_${randomCities[i]}`;
 
             // Add an event listener to each details button
             document.getElementById(randomCities[i]).addEventListener('click', () => {
@@ -132,6 +133,7 @@ document.addEventListener('DOMContentLoaded', () => {
                   window.location.href = 'views/details.html';
             });
 
+            // Add an event listener to each Favourite button
             document.getElementById(`fav_${randomCities[i]}`).addEventListener('click', () => {
                   // Add/Remove the city to the favorites list
                   const favs = appState.getFavorites();
@@ -145,6 +147,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
                   // Save the app state
                   appState.saveState();
+            });
+
+            // Add an event listener to each Forecast button
+            document.getElementById(`forecast_${randomCities[i]}`).addEventListener('click', () => {
+                  // Store the city name in the app state
+                  appState.setSearch(randomCities[i]);
+                  appState.saveState();
+
+                  // Redirect to the forecast page
+                  window.location.href = 'views/forecast.html';
             });
       }
 });
