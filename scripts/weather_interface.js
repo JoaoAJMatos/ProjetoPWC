@@ -18,6 +18,35 @@ class WeatherInterface {
                   .then(data => data);
       }
 
+      // Get the weather forecast for the next 5 days given a forecast list
+      static getNext5DaysForecast(forecastList) {
+            return forecastList.then(forecastList => {
+                  const forecast = [];
+                  let   day = 0;
+
+                  for (let i = 0; i < forecastList.length; i++) {
+                        // If the current forecast is at 12:00 PM
+                        if (forecastList[i]["dt_txt"].includes("12:00:00")) {
+                              if (day === 5)
+                                    break;
+
+                              forecast.push(forecastList[i]);
+                              day++;
+                        }
+                  }
+
+                  return forecast;
+            });
+      }
+
+      // Get the weather forecast for the next 3 hours given a forecast list
+      static getNext3HoursForecast(forecastList) {
+            // Return the first 3 elements of the forecast list
+            return forecastList.then(forecastList => forecastList.slice(0, 3));
+      }
+
+
+
       static getMaxMinTemp(data) {
             return data.then(data => {
                   const maxTemp = data["main"]["temp_max"];

@@ -4,19 +4,10 @@ import { placeWeatherIcon, convertKelvinToCel } from './util.js';
 
 
 // A list of some cities which can be randomly selected to appear on the main page
-const cityList = ['London', 'New York', 'Paris',
-                  'Tokyo', 'Sydney', 'Moscow',
-                  'Berlin', 'Rome', 'Madrid',
-                  'Dubai', 'Hong Kong', 'Singapore',
-                  'Bangkok', 'Beijing', 'Shanghai',
-                  'Seoul', 'Mexico City', 'Toronto',
-                  'Los Angeles', 'Chicago', 'Miami',
-                  'San Francisco', 'Las Vegas', 'Barcelona',
-                  'Amsterdam', 'Vienna', 'Prague', 'Budapest', 
-                  'Lisbon', 'Athens', 'Dublin', 'Cape Town',
-                  'Buenos Aires', 'Rio de Janeiro', 'Sao Paulo',
-                  'Cairo', 'Istanbul', 'Rome', 'Milan', 'Bucharest',
-                  'Bogota', 'Lima', 'Brisbane', 'Melbourne', 'Perth'
+const cityList = ['Leiria', 'Lisboa', 'Porto', 'Braga', 'Entroncamento',
+                  'Coimbra', 'Faro', 'Viseu', 'Vila Real', 'Viana do Castelo',
+                  'Aveiro', 'Setúbal', 'Beja', 'Castelo Branco', 'Guarda',
+                  'Portalegre', 'Évora',  'Vila Nova de Famalicão'
 ];
 
 
