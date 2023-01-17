@@ -3,7 +3,7 @@ import WeatherInterface from './weather_interface.js';
 import { getMonthName, getMonth, getDayOfMonth, convertKelvinToPreferredUnit } from './util.js';
 
 
-const swapForecastRange = () => {
+const swapForecastRange = (cityName, weatherData, appState) => {
       const forecastRange5days  = document.getElementById('forecast-range-5-days');
       const forecastRange3hours = document.getElementById('forecast-range-3-hours');
 
@@ -15,6 +15,29 @@ const swapForecastRange = () => {
             // Hide the unnecessary cards
             document.getElementById('card3').style.display = 'none';
             document.getElementById('card4').style.display = 'none';
+
+            // Populate the cards with data by hand
+            const card0 = document.getElementById('card0');
+            const card1 = document.getElementById('card1');
+            const card2 = document.getElementById('card2');
+
+            const card0Header = card0.children[0];
+            const card1Header = card1.children[0];
+            const card2Header = card2.children[0];
+
+            const card0Info = card0.children[1];
+            const card1Info = card1.children[1];
+            const card2Info = card2.children[1];
+
+            card0Header.innerHTML = 'Agora';
+            card1Header.innerHTML = 'Em 3 horas';
+            card2Header.innerHTML = 'Em 6 horas';
+
+            weatherData.then(data => {
+                  card0Info.innerHTML = `${convertKelvinToPreferredUnit(data.list[0].main.temp, appState)} °C`;
+                  card1Info.innerHTML = `${convertKelvinToPreferredUnit(data.list[1].main.temp, appState)} °C`;
+                  card2Info.innerHTML = `${convertKelvinToPreferredUnit(data.list[2].main.temp, appState)} °C`;
+            });
       }
       else {
             forecastRange3hours.classList.remove('active');
@@ -23,6 +46,9 @@ const swapForecastRange = () => {
             // Show the hidden cards
             document.getElementById('card3').style.display = 'block';
             document.getElementById('card4').style.display = 'block';
+
+            // Populate the cards with data
+            populateForecastPage(cityName, weatherData, appState);
       }
 }
 
@@ -71,11 +97,11 @@ document.addEventListener('DOMContentLoaded', () => {
       const forecastRange3hours = document.getElementById('forecast-range-3-hours');
 
       forecastRange5days.addEventListener('click', () => {
-            swapForecastRange();
+            swapForecastRange(cityName, data, appState);
       });
 
       forecastRange3hours.addEventListener('click', () => {
-            swapForecastRange()
+            swapForecastRange(cityName, data, appState);
       });
 
       populateForecastPage(cityName, data, appState);
