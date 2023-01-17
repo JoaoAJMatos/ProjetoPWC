@@ -11,10 +11,18 @@ const swapForecastRange = () => {
       if (forecastRange5days.classList.contains('active')) {
             forecastRange5days.classList.remove('active');
             forecastRange3hours.classList.add('active');
+
+            // Hide the unnecessary cards
+            document.getElementById('card3').style.display = 'none';
+            document.getElementById('card4').style.display = 'none';
       }
       else {
             forecastRange3hours.classList.remove('active');
             forecastRange5days.classList.add('active');
+
+            // Show the hidden cards
+            document.getElementById('card3').style.display = 'block';
+            document.getElementById('card4').style.display = 'block';
       }
 }
 
