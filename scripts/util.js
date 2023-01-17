@@ -24,6 +24,26 @@ const timestampToDate = (timestamp) => {
       return date.toLocaleDateString();
 }
 
+// Get the current day of the month
+const getDayOfMonth = () => {
+      const date = new Date();
+      return date.getDate();
+}
+
+// Get the current month
+const getMonth = () => {
+      const date = new Date();
+      return date.getMonth();
+}
+
+// Get the corresponding name of a given month
+const getMonthName = (month) => {
+      const months = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 
+                      'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
+
+      return months[month];
+}
+
 
 
 /* ============== TEMPERATURE UTILITIES ============== */ 
@@ -47,6 +67,16 @@ const convertFarToCel = (temp) => {
 // Converts a given temperature from Celsius to Farhenheit
 const convertCelToFar = (temp) => {
       return Math.round((temp * (9 / 5)) + 32);
+}
+
+// Converts a given temperature from Kelvin to the preferred unit
+const convertKelvinToPreferredUnit = (temp, appState) => {
+      const unit = appState.getUnits();
+
+      if (unit === 'metric')
+            return convertKelvinToCel(temp);
+
+      return convertKelvinToFar(temp);
 }
 
 
@@ -113,4 +143,5 @@ const getUserMetric = (lat, long) => {
 }
 
 
-export { timestampToDate, convertFarToCel, convertCelToFar, convertKelvinToCel, convertKelvinToFar, placeWeatherIcon, getUserLongLat, getUserCountry, getUserMetric };
+
+export { timestampToDate, getDayOfMonth, getMonth, getMonthName, convertKelvinToPreferredUnit, convertFarToCel, convertCelToFar, convertKelvinToCel, convertKelvinToFar, placeWeatherIcon, getUserLongLat, getUserCountry, getUserMetric };

@@ -39,10 +39,6 @@
                         </li>
                     </ul>
 
-                    <!-- Vertical line -->
-                    <div class="vr ms-2 me-2"></div>
-
-                    <!-- Search form with active feedback -->
                     <form class="d-flex">
                         <input class="form-control me-2 ms-2" type="search" placeholder="Cidade" aria-label="Search">
                         <button class="btn btn-outline-secondary" type="submit">Procurar</button>
@@ -52,59 +48,58 @@
         </nav>
     </header>
 
-    <!-- Coloca aqui o HTML para o forecast-->
     <br>
     <section class="">
         <div class="container py-5 vh-100 d-flex flex-column gap-5 justify-content">
             <div id="card" class="flex-row gap-5 d-flex justify-content-center">
                 <div class="container bcontent">
                     <br>
-                    <h2>Cidade</h2>
+                    <h2 id="city-tittle">Cidade</h2>
                     <hr>
                     <div class="card text-center">
                         <div class="card-header">
                             <ul class="nav nav-pills card-header-pills">
                                 <li class="nav-item">
-                                    <a class="nav-link active" href="#">5 em 5 dias</a>
+                                    <button id="forecast-range-5-days" class="btn btn-primary m-2 active" data-toggle="button" aria-pressed="true" autocomplete="off">5 em 5 dias</button>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">3 em 3 Horas</a>
+                                    <button id="forecast-range-3-hours" class="btn btn-primary m-2" data-toggle="button" aria-pressed="false" autocomplete="off">3 em 3 horas</button>
                                 </li>
                             </ul>
                         </div>
                         <div class="card-body">
                             <div class="row">
-                                <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
-                                    <div class="card-header">Dia</div>
+                                <div id="card0" class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+                                    <div id="card-h0" class="card-header">Dia</div>
                                     <div class="card-body">
-                                        <h5 class="card-title">Tempo</h5>
+                                        <h5 id="card-i0" class="card-title">Tempo</h5>
                                     </div>
                                 </div>
-                                <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
-                                    <div class="card-header">Dia</div>
+                                <div id="card1" class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+                                    <div id="card-h1" class="card-header">Dia</div>
                                     <div class="card-body">
-                                        <h5 class="card-title">Tempo</h5>
+                                        <h5 id="card-i1" class="card-title">Tempo</h5>
                                     </div>
                                 </div>
-                                <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
-                                    <div class="card-header">Dia</div>
+                                <div id="card2" class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+                                    <div id="card-h2" class="card-header">Dia</div>
                                     <div class="card-body">
-                                        <h5 class="card-title">Tempo</h5>
+                                        <h5 id="card-i2" class="card-title">Tempo</h5>
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
-                                    <div class="card-header">Dia</div>
+                                <div id="card3" class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+                                    <div id="card-h3" class="card-header">Dia</div>
                                     <div class="card-body">
-                                        <h5 class="card-title">Tempo</h5>
+                                        <h5 id="card-i3" class="card-title">Tempo</h5>
                                     </div>
                                 </div>
 
-                                <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
-                                    <div class="card-header">Dia</div>
+                                <div id="card4" class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+                                    <div id="card-h4" class="card-header">Dia</div>
                                     <div class="card-body">
-                                        <h5 class="card-title">Tempo</h5>
+                                        <h5 id="card-i4" class="card-title">Tempo</h5>
                                     </div>
                                 </div>
 
@@ -132,8 +127,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js"
         integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk"
         crossorigin="anonymous"></script>
-
-    <script src="scripts/main.js" crossorigin="anonymous"></script>
+    
+    <script type="module" src="../scripts/forecast.js"></script>
 </body>
 
 </html>
