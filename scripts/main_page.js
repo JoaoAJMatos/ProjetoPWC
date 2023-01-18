@@ -1,6 +1,6 @@
-import WeatherInterface  from './weather_interface.js';
-import AppState from './state.js';
-import { placeWeatherIcon, convertKelvinToCel } from './util.js';
+import WeatherInterface  from './common/weather_interface.js';
+import AppState from './common/state.js';
+import { placeWeatherIcon, convertKelvinToCel } from './common/util.js';
 
 
 // A list of some cities which can be randomly selected to appear on the main page
@@ -128,6 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById(`fav_${randomCities[i]}`).addEventListener('click', () => {
                   // Add/Remove the city to the favorites list
                   const favs = appState.getFavorites();
+
                   if (favs.includes(randomCities[i])) {
                         appState.removeFavorite(randomCities[i]);
                         document.getElementById(`fav_${randomCities[i]}`).innerHTML = 'Favorito';

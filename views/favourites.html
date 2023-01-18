@@ -49,13 +49,15 @@
       <section class="container">
             <div class="container py-5 vh-100 d-flex flex-column gap-5 justify-content">
                   <div id="card" class="flex-row gap-5 d-flex justify-content-center">
-                        <div class="container bcontent">
-                              <br>
+                        <div id="container-favs" class="container bcontent m-5">
                               <div class="d-flex">
                                     <h2>Favoritos</h2>
                                     <button id="clear-fav-btn" class="btn btn-outline-secondary">Limpar Favoritos</button>
                               </div>
                               <hr/>
+                              <div id="favourites-list">
+                                    <!-- Fav cards are going to be inserted here -->
+                              </div>
                         </div>
                   </div>
             </div>
@@ -81,7 +83,18 @@
                               </div>
                         </div>
                   </div>
-              </div>
+            </div>
+      </template>
+
+      <!-- Template to show when there are no favourites -->
+      <template id="no-fav-template">
+            <div class="container">
+                  <div class="row">
+                        <div class="col-sm-12">
+                              <h3 class="text-center">Não há cidades nos favoritos</h3>
+                        </div>
+                  </div>
+            </div>
       </template>
 
       <!-- Bootsrap JS -->
