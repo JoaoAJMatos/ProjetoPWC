@@ -1,8 +1,8 @@
 // This file is a mess, but JS is a mess by itself, so I'm not even going to bother
 
-import AppState from './state.js';
-import WeatherInterface from './weather_interface.js';
-import { getMonthName, getMonth, getDayOfMonth, convertKelvinToPreferredUnit } from './util.js';
+import AppState from './common/state.js';
+import WeatherInterface from './common/weather_interface.js';
+import { getMonthName, getMonth, getDayOfMonth, convertKelvinToPreferredUnit } from './common/util.js';
 
 // TODO: Make the 5 day forecast work
 
