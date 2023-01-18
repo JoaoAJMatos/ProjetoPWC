@@ -84,7 +84,7 @@ const convertKelvinToPreferredUnit = (temp, appState) => {
 /* ============== WEATHER UTILITIES ============== */
 
 // Returns the weather icon for a given weather condition
-const placeWeatherIcon = (weatherAPIResp, element) => {
+const placeWeatherIcon = (weatherAPIResp, element, isMainPage) => {
       let weatherState, datetime, sunset;
 
       weatherAPIResp = weatherAPIResp.then(data => {
@@ -93,12 +93,12 @@ const placeWeatherIcon = (weatherAPIResp, element) => {
             weatherState = data["weather"][0]["main"];
 
             if (datetime > sunset)
-                  element.src = weatherIcons['night'];
+                  isMainPage ? element.src = weatherIcons['night'] : element.src = '../' +  weatherIcons['night'];
             
             if (weatherState !== undefined && weatherState in weatherIcons)
-                  element.src = weatherIcons[weatherState];
+                  isMainPage ? element.src = weatherIcons[weatherState] : element.src = '../' + weatherIcons[weatherState];
             else
-                  element.src = weatherIcons['day'];
+                  isMainPage ? element.src = weatherIcons['Clear'] : element.src = '../' + weatherIcons['Clear'];
       });
 }
 
