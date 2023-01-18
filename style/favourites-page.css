@@ -1,0 +1,36 @@
+.col-sm-5{
+      display: flex;
+}
+
+.card-img{
+      max-width:500px;
+      max-height:240px;
+} 
+
+.card{
+     box-shadow: o o 30px rgba(0,0,0,0.5);
+     overflow: hidden;
+     border-radius: 10px; 
+     border-color: black;
+     border-width: 3px;
+     max-width: 800px;
+     margin: 0 auto;    
+}
+
+.img-coracao
+{
+      max-width: 30px;
+      max-height: 30px;
+      
+}
+
+.img-temperatura
+{
+      max-width: 20px;
+      max-height: 20px;
+      margin-right: 15px;
+}
+
+#clear-fav-btn {
+      margin-left: 1rem;
+}

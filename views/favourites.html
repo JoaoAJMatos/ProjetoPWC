@@ -9,6 +9,7 @@
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 
       <link rel="stylesheet" href="../style/main.css">
+      <link rel="stylesheet" href="../style/favourites-page.css">
 
       <link rel="icon" href="../img/logo.svg" type="image/x-icon">
       <title>Weather Now</title>
@@ -34,11 +35,7 @@
                                           <a class="nav-link" href="forecast.html">Forecast</a>
                                     </li>
                               </ul>
-                              
-                              <!-- Vertical line -->
-                              <div class="vr ms-2 me-2"></div>
 
-                              <!-- Search form with active feedback -->
                               <form class="d-flex">
                                     <input class="form-control me-2 ms-2" type="search" placeholder="Cidade" aria-label="Search">
                                     <button class="btn btn-outline-secondary" type="submit">Procurar</button>
@@ -48,157 +45,48 @@
             </nav>
       </header>
 
-      <!-- Coloca aqui o HTML para os favoritos -->
-      
-      
-      
+      <!-- Container where the fav cards are going to be -->
       <section class="container">
             <div class="container py-5 vh-100 d-flex flex-column gap-5 justify-content">
                   <div id="card" class="flex-row gap-5 d-flex justify-content-center">
-                              <div class="container bcontent">
-                                    <br>
+                        <div class="container bcontent">
+                              <br>
+                              <div class="d-flex">
                                     <h2>Favoritos</h2>
-                                    <hr/>
-                                    <div class="card" style="width: 1000px;">
-                                        <div class="row no-gutters">
-                                            <div class="col-sm-5">
-                                                <img class="card-img" src="https://www.segurospromo.com.br/blog/wp-content/uploads/2020/11/braga-portugal.jpg";>
-                                            </div>
-                                            <div class="col-sm-7">
-                                                <div class="col-sm-">
-                                                      <img class="img-coracao" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Heart_coraz%C3%B3n.svg/220px-Heart_coraz%C3%B3n.svg.png" align="right";>
-                                                      <img class="img-temperatura" src="../img/imagemCelsius.png" align="right";>
-                                                      <img class="img-temperatura" src="../img/imagemFahrenheit.png" align="right";>
-                                                    </div>
-                                                    <br>
-                                                <div class="card-body">
-                                                      <h5 class="card-title text-center">Cidade</h5>
-                                                      <p class="card-text text-center">Clima</p>
-                                                      <p class="card-text text-center">Temperatura</p>
-                                                      <p class="card-text text-center">Humidade</p>
-                                                      <p class="card-text text-center">Vento</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <br>
-                                    <div class="card">
-                                          <div class="row no-gutters">
-                                              <div class="col-sm-5">
-                                                <img class="card-img" src="https://cdn.visitportugal.com/sites/default/files/styles/encontre_detalhe_poi_destaque/public/mediateca/shutterstock_479637601_CasteloLeiria_CN_saiko3p.jpg?itok=10SLoYIw" alt="Suresh Dasari Card">
-                                              </div>
-                                              <div class="col-sm-7">
-                                                <div class="col-sm-">
-                                                      <img class="img-coracao" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Heart_coraz%C3%B3n.svg/220px-Heart_coraz%C3%B3n.svg.png" align="right";>
-                                                      <img class="img-temperatura" src="../img/imagemCelsius.png" align="right";>
-                                                      <img class="img-temperatura" src="../img/imagemFahrenheit.png" align="right";>
-                                                    </div>
-                                                    <br>
-                                                <div class="card-body">
-                                                      <h5 class="card-title text-center">Cidade</h5>
-                                                      <p class="card-text text-center">Clima</p>
-                                                      <p class="card-text text-center">Temperatura</p>
-                                                      <p class="card-text text-center">Humidade</p>
-                                                      <p class="card-text text-center">Vento</p>
-                                                </div>
-                                              </div>
-                                          </div>
-                                      </div>
-                                      <br>
-                                    <div class="card" style="width: 1000px;">
-                                          <div class="row no-gutters">
-                                              <div class="col-sm-5">
-                                                  <img class="card-img" src="https://img.static-kl.com/images/media/323976F6-5898-4B1D-90B738F56C8BCE0A" alt="Suresh Dasari Card">
-                                              </div>
-                                              <div class="col-sm-7">
-                                                <div class="col-sm-">
-                                                      <img class="img-coracao" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Heart_coraz%C3%B3n.svg/220px-Heart_coraz%C3%B3n.svg.png" align="right";>
-                                                      <img class="img-temperatura" src="../img/imagemCelsius.png" align="right";>
-                                                      <img class="img-temperatura" src="../img/imagemFahrenheit.png" align="right";>
-                                                    </div>
-                                                    <br>
-                                                <div class="card-body">
-                                                      <h5 class="card-title text-center">Cidade</h5>
-                                                      <p class="card-text text-center">Clima</p>
-                                                      <p class="card-text text-center">Temperatura</p>
-                                                      <p class="card-text text-center">Humidade</p>
-                                                      <p class="card-text text-center">Vento</p>
-                                                </div>
-                                              </div>
-                                              
-                                          </div>
-                                      </div>
-                                      <br>
-                                    <div class="card" style="width: 1000px;">
-                                          <div class="row no-gutters">
-                                              <div class="col-sm-5">
-                                                  <img class="card-img" src="https://viagemeturismo.abril.com.br/wp-content/uploads/2017/01/belem-tower-2809818_1920.jpg" alt="Suresh Dasari Card">
-                                              </div>
-                                              <div class="col-sm-7">
-                                                <div class="col-sm-">
-                                                      <img class="img-coracao" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Heart_coraz%C3%B3n.svg/220px-Heart_coraz%C3%B3n.svg.png" align="right";>
-                                                      <img class="img-temperatura" src="../img/imagemCelsius.png" align="right";>
-                                                      <img class="img-temperatura" src="../img/imagemFahrenheit.png" align="right";>
-                                                    </div>
-                                                    <br>
-                                                <div class="card-body">
-                                                      <h5 class="card-title text-center">Cidade</h5>
-                                                      <p class="card-text text-center">Clima</p>
-                                                      <p class="card-text text-center">Temperatura</p>
-                                                      <p class="card-text text-center">Humidade</p>
-                                                      <p class="card-text text-center">Vento</p>
-                                                </div>
-                                              </div>
-                                          </div>
-                                      </div> 
-                                </div>
-
+                                    <button id="clear-fav-btn" class="btn btn-outline-secondary">Limpar Favoritos</button>
+                              </div>
+                              <hr/>
+                        </div>
                   </div>
             </div>
       </section>
       
-      
-      
-      
-      <style>
-            
-            .col-sm-5{
-                  display: flex;
-            }
-
-           .card-img{
-                  max-width:500px;
-                  max-height:240px;
-           } 
-
-            .card{
-                 box-shadow: o o 30px rgba(0,0,0,0.5);
-                 overflow: hidden;
-                 border-radius: 10px; 
-                 border-color: black;
-                 border-width: 3px;
-                 max-width: 800px;
-                 margin: 0 auto;    
-            }
-
-            .img-coracao
-            {
-                  max-width: 30px;
-                  max-height: 30px;
-                  
-            }
-
-            .img-temperatura
-            {
-                  max-width: 20px;
-                  max-height: 20px;
-                  margin-right: 15px;
-            }
-
-      
-      </style>
+      <!-- Template for the cards -->
+      <template id="fav-card-template">
+            <div class="card" style="width: 1000px;">
+                  <div class="row no-gutters">
+                        <div class="col-sm-5">
+                              <img src="" alt="" class="card-img">
+                        </div>
+                        <div class="col-sm-7">
+                              <div class="col-sm-">
+                                    <button class="btn btn-secondary m-2">Remover Favorito</button>
+                              </div>
+                              <div class="card-body">
+                                    <h5 class="card-title text-center">Cidade</h5>
+                                    <p class="card-text text-center">Clima</p>
+                                    <p class="card-text text-center">Temperatura</p>
+                                    <p class="card-text text-center">Humidade</p>
+                                    <p class="card-text text-center">Vento</p>
+                              </div>
+                        </div>
+                  </div>
+              </div>
+      </template>
 
       <!-- Bootsrap JS -->
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
+
+      <script type="module" src="../scripts/favourites_page.js"></script>
 </body>
 </html>
