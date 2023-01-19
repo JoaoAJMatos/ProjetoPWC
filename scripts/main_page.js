@@ -39,7 +39,7 @@ const getRandomCities = (cityCount) => {
 
 const setTemperature = (element, appState, temperature) => {
       if (appState.getUnits() === 'metric') {
-            element.innerHTML = `${convertKelvinToCel(temperature)} °C`;
+            element.innerHTML = `${convertKelvinToCel(temperature)} ${appState.getPreferredUnitSymbol()}`;
             return;
       }
       
@@ -75,7 +75,7 @@ const populateWeatherCards = (cities, weatherInterface, appState) => {
             cityCardTitle.innerHTML = city;
 
             // Set the weather icon
-            placeWeatherIcon(weatherData, cityCardIcon);
+            placeWeatherIcon(weatherData, cityCardIcon, true);
             cityCardIcon.width = 50;
             cityCardIcon.height = 50;
 

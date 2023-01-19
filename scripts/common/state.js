@@ -94,6 +94,16 @@ class AppState {
       getUnits() {
             return this.state.units;
       }
+
+      
+      // Return the symbol for the weather units
+      getPreferredUnitSymbol() {
+            if (this.state.units === "metric") {
+                  return "ºC";
+            }
+
+            return "ºF";
+      }
 }
 
 export default AppState;

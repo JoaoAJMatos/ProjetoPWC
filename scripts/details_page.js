@@ -1,5 +1,5 @@
-import AppState from './state.js';
-import WeatherInterface from './weather_interface.js';
+import AppState from './common/state.js';
+import WeatherInterface from './common/weather_interface.js';
 
 const populateDetailsPage = (cityName, data) => {
       const tittle = document.getElementById('details-tittle');
