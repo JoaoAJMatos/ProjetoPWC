@@ -50,7 +50,7 @@
             <div class="container py-5 vh-100 d-flex flex-column gap-5 justify-content">
                   <div id="card" class="flex-row gap-5 d-flex justify-content-center">
                         <div id="container-favs" class="container bcontent m-5">
-                              <div class="d-flex">
+                              <div class="d-flex justify-content-between">
                                     <h2>Favoritos</h2>
                                     <button id="clear-fav-btn" class="btn btn-outline-secondary">Limpar Favoritos</button>
                               </div>
@@ -65,21 +65,20 @@
       
       <!-- Template for the cards -->
       <template id="fav-card-template">
-            <div class="card" style="width: 1000px;">
+            <div class="card w-1000 mb-5">
                   <div class="row no-gutters">
                         <div class="col-sm-5">
                               <img src="" alt="" class="card-img">
                         </div>
                         <div class="col-sm-7">
-                              <div class="col-sm-">
-                                    <button class="btn btn-secondary m-2">Remover Favorito</button>
-                              </div>
                               <div class="card-body">
-                                    <h5 class="card-title text-center">Cidade</h5>
-                                    <p class="card-text text-center">Clima</p>
+                                    <h5 class="card-title text-center mb-3 mt-2">Cidade</h5>
                                     <p class="card-text text-center">Temperatura</p>
                                     <p class="card-text text-center">Humidade</p>
                                     <p class="card-text text-center">Vento</p>
+                                    <div class="text-center">
+                                          <button id="btn-rm-fav" class="btn btn-secondary mt-3">Remover Favorito</button>
+                                    </div>
                               </div>
                         </div>
                   </div>
