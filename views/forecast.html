@@ -7,13 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Bootsrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
-        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link rel="stylesheet" href="../style/main.css">
 
     <link rel="icon" href="../img/logo.svg" type="image/x-icon">
     <title>Weather Now</title>
+
+    <script type="module" src="../scripts/forecastPage.js"></script>
+    <script type="module" src="../scripts/common/common.js"></script>
 </head>
 
 <body>
@@ -42,8 +43,8 @@
                         </li>
                     </ul>
 
-                    <form class="d-flex">
-                        <input class="form-control me-2 ms-2" type="search" placeholder="Cidade" aria-label="Search">
+                    <form id="search-form" class="d-flex">
+                        <input id="search-box" class="form-control me-2 ms-2" type="search" placeholder="Cidade" aria-label="Search">
                         <button class="btn btn-outline-secondary" type="submit">Procurar</button>
                     </form>
                 </div>
@@ -63,28 +64,28 @@
                         <div class="card-header">
                             <ul class="nav nav-pills card-header-pills">
                                 <li class="nav-item">
-                                    <button id="forecast-range-5-days" class="btn btn-primary m-2 active" data-toggle="button" aria-pressed="true" autocomplete="off">5 em 5 dias</button>
+                                    <button id="forecast-range-5-days" class="btn btn-secondary m-2 active" data-toggle="button" aria-pressed="true" autocomplete="off">5 em 5 dias</button>
                                 </li>
                                 <li class="nav-item">
-                                    <button id="forecast-range-3-hours" class="btn btn-primary m-2" data-toggle="button" aria-pressed="false" autocomplete="off">3 em 3 horas</button>
+                                    <button id="forecast-range-3-hours" class="btn btn-secondary m-2" data-toggle="button" aria-pressed="false" autocomplete="off">3 em 3 horas</button>
                                 </li>
                             </ul>
                         </div>
                         <div class="card-body">
                             <div class="row">
-                                <div id="card0" class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+                                <div id="card0" class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
                                     <div id="card-h0" class="card-header">Dia</div>
                                     <div class="card-body">
                                         <h5 id="card-i0" class="card-title">Tempo</h5>
                                     </div>
                                 </div>
-                                <div id="card1" class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+                                <div id="card1" class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
                                     <div id="card-h1" class="card-header">Dia</div>
                                     <div class="card-body">
                                         <h5 id="card-i1" class="card-title">Tempo</h5>
                                     </div>
                                 </div>
-                                <div id="card2" class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+                                <div id="card2" class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
                                     <div id="card-h2" class="card-header">Dia</div>
                                     <div class="card-body">
                                         <h5 id="card-i2" class="card-title">Tempo</h5>
@@ -92,14 +93,14 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div id="card3" class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+                                <div id="card3" class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
                                     <div id="card-h3" class="card-header">Dia</div>
                                     <div class="card-body">
                                         <h5 id="card-i3" class="card-title">Tempo</h5>
                                     </div>
                                 </div>
 
-                                <div id="card4" class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+                                <div id="card4" class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
                                     <div id="card-h4" class="card-header">Dia</div>
                                     <div class="card-body">
                                         <h5 id="card-i4" class="card-title">Tempo</h5>
@@ -130,8 +131,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js"
         integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk"
         crossorigin="anonymous"></script>
-    
-    <script type="module" src="../scripts/forecast.js"></script>
 </body>
 
 </html>

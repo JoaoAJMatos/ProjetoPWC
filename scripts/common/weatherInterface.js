@@ -1,21 +1,24 @@
 // Wrapper class for interacting with the OpenWeather API
 class WeatherInterface {
       constructor(APIID) {
-            this.apiKey = APIID || "7b6279bb505f54fde5ebc965e13c43de";
+            this.apiKey    = APIID || "7b6279bb505f54fde5ebc965e13c43de";
+            this.lastError = null;
       }
 
       // Get the current weather for a given city
       getWeatherNow(city) {
             return fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${this.apiKey}`)
                   .then(response => response.json())
-                  .then(data => data);
+                  .then(data => data)
+                  .catch(error => this.lastError = error);
       }
 
       // Get the weather forecast for a given city
       getWeatherForecast(city) {
             return fetch(`http://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${this.apiKey}`)
                   .then(response => response.json())
-                  .then(data => data);
+                  .then(data => data)
+                  .catch(error => this.lastError = error);
       }
 
       // Get the weather forecast for the next 5 days given a forecast list

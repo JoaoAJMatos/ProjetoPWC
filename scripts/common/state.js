@@ -19,14 +19,11 @@ class AppState {
             }
 
             // If the user's favourites are not set, set them to an empty array
-            if (!this.state.favourites) {
-                  this.state.favourites = [];
-            }
+            if (!this.state.favourites) this.state.favourites = [];
 
             // If the user's current search is not set, set it to an empty string
-            if (!this.state.currentSearch) {
-                  this.state.currentSearch = "";
-            }
+            if (!this.state.currentSearch) this.state.currentSearch = "";
+            if(!this.state.currentDetails) this.state.currentDetails = "";
       }
 
 
@@ -55,6 +52,8 @@ class AppState {
 
       // Add a city to the list of favorites
       setFavorite(cityName) {
+            // Dont allow duplicates
+            if (this.state.favourites.includes(cityName)) return;
             this.state.favourites.push(cityName);
       }
 
@@ -71,11 +70,15 @@ class AppState {
 
 
       // Sets a city as the current search
-      // When clicking the "detalhes" button, the current search will be
+      // When clicking the "Procurar" button, the current search will be
       // stored in the AppState. Other pages can then access the current
       // search and use it to fetch the weather data for the specified city.
       setSearch(cityName) {
             this.state.currentSearch = cityName;
+      }
+
+      setDetails(cityName) {
+            this.state.currentDetails = cityName;
       }
 
 
@@ -95,7 +98,7 @@ class AppState {
             return this.state.units;
       }
 
-      
+
       // Return the symbol for the weather units
       getPreferredUnitSymbol() {
             if (this.state.units === "metric") {

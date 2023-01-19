@@ -1,14 +1,12 @@
 import WeatherInterface  from './common/weatherInterface.js';
 import AppState from './common/state.js';
-import { placeWeatherIcon, convertKelvinToCel, convertKelvinToPreferredUnit } from './common/util.js';
-
-// TODO: use HTML templates instead of creating elements manually
+import { placeWeatherIcon, convertKelvinToPreferredUnit } from './common/util.js';
 
 // A list of some cities which can be randomly selected to appear on the main page
-const cityList = ['Leiria', 'Lisboa', 'Porto', 'Braga', 'Entroncamento',
-                  'Coimbra', 'Faro', 'Viseu', 'Vila Real', 'Viana do Castelo',
-                  'Aveiro', 'Setúbal', 'Beja', 'Castelo Branco', 'Guarda',
-                  'Portalegre', 'Évora',  'Vila Nova de Famalicão'
+const cityList = ['Dubai', 'Toronto', 'Madrid', 'Lisbon', 'Rio de Janeiro',
+                  'Porto', 'Leeds', 'Manchester', 'Barcelona', 'Sao Paulo',
+                  'Luanda', 'Cairo', 'Entroncemento', 'Leiria', 'Coimbra',
+                  'Paris', 'Berlin',  'Munich'
 ];
 
 
@@ -108,7 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Add an event listener to each details button
             document.getElementById(randomCities[i]).addEventListener('click', () => {
                   // Store the city name in the app state
-                  appState.setSearch(randomCities[i]);
+                  appState.setDetails(randomCities[i]);
                   appState.saveState();
 
                   // Redirect to the details page
@@ -135,30 +133,11 @@ document.addEventListener('DOMContentLoaded', () => {
             // Add an event listener to each Forecast button
             document.getElementById(`forecast_${randomCities[i]}`).addEventListener('click', () => {
                   // Store the city name in the app state
-                  appState.setSearch(randomCities[i]);
+                  appState.setDetails(randomCities[i]);
                   appState.saveState();
 
                   // Redirect to the forecast page
                   window.location.href = 'views/forecast.html';
             });
       }
-
-      // Set the change Units button text
-      const btnChangeMetric = document.getElementById('btn-change-metric');
-      if (appState.getUnits() === 'metric') {
-            btnChangeMetric.innerHTML = '°F';
-      } else {
-            btnChangeMetric.innerHTML = '°C';
-      }
-            
-
-      // Add an event listener to the change units button
-      btnChangeMetric.addEventListener('click', () => {
-            // Change the units
-            appState.swapUnits();
-            appState.saveState();
-
-            // Reload the page
-            window.location.reload();
-      });
 });

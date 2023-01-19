@@ -2,63 +2,111 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Bootsrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
-        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+      <!-- Bootsrap CSS -->
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+            integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="../style/main.css">
+      <link rel="stylesheet" href="../style/main.css">
 
-    <link rel="icon" href="../img/logo.svg" type="image/x-icon">
-    <title>Weather Now</title>
+      <link rel="icon" href="../img/logo.svg" type="image/x-icon">
+      <title>Weather Now</title>
+
+      <script type="module" src="../scripts/common/common.js"></script>
+      <script type="module" src="../scripts/searchPage.js"></script>
 </head>
 
 <body>
-    <header>
-        <!-- Fixed Navbar -->
-        <nav class="navbar navbar-expand-lg bg-light fixed-top">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="../index.html">
-                    <img src="../img/logo.svg" alt="logo" width="30" height="24" class="d-inline-block align-text-top">
-                    Weather Now
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="../index.html">Home</a>
-                        </li>
-                        <li class="nav-item">
-                              <a class="nav-link" href="./views/forecast.html">Forecast</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="favourites.html">Favoritos</a>
-                        </li>
-                        <li class="nav-item">
-                              <button id="btn-change-metric" class="btn btn-secondary"></button>
-                        </li>
-                    </ul>
-                    <form class="d-flex">
-                        <input class="form-control me-2 ms-2" type="search" placeholder="Cidade" aria-label="Search">
-                        <button class="btn btn-outline-secondary" type="submit">Procurar</button>
-                    </form>
-                </div>
-            </div>
-        </nav>
-    </header>
+      <header>
+            <!-- Fixed Navbar -->
+            <nav class="navbar navbar-expand-lg bg-light fixed-top">
+                  <div class="container-fluid">
+                        <a class="navbar-brand" href="../index.html">
+                              <img src="../img/logo.svg" alt="logo" width="30" height="24"
+                                    class="d-inline-block align-text-top">
+                              Weather Now
+                        </a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                              data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                              aria-label="Toggle navigation">
+                              <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarNav">
+                              <ul class="navbar-nav ms-auto">
+                                    <li class="nav-item">
+                                          <a class="nav-link active" aria-current="page" href="../index.html">Home</a>
+                                    </li>
+                                    <li class="nav-item">
+                                          <a class="nav-link" href="forecast.html">Forecast</a>
+                                    </li>
+                                    <li class="nav-item">
+                                          <a class="nav-link" href="favourites.html">Favoritos</a>
+                                    </li>
+                                    <li class="nav-item">
+                                          <button id="btn-change-metric" class="btn btn-secondary"></button>
+                                    </li>
+                              </ul>
+                              <form id="search-form" class="d-flex">
+                                    <input id="search-box" class="form-control me-2 ms-2" type="search" placeholder="Cidade" aria-label="Search">
+                                    <button class="btn btn-outline-secondary" type="submit">Procurar</button>
+                              </form>
+                        </div>
+                  </div>
+            </nav>
+      </header>
 
-    <!-- Bootsrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js"
-        integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk"
-        crossorigin="anonymous"></script>
-    
-    <script type="module" src="../scripts/forecast.js"></script>
+      <!-- Div where the template code will be inserted -->
+      <div id="search-content">
+      </div>
+
+      <!-- Template for when the search is successful -->
+      <template id="search-result-template-success">
+            <div class="container py-5 vh-100 d-flex flex-column gap-5 justify-content-center">
+                  <div class="card">
+                        <div class="card-body">
+                              <h5 id="details-tittle" class="card-title">Card title</h5>
+                              <h6 id="lat" class="card-subtitle mb-2 text-muted"></h6>
+                              <h6 id="lon" class="card-subtitle mb-2 text-muted"></h6>
+                              <br>
+                              <div class="card">
+                                    <div class="card-body">
+                                          <img id="weather-icon" src="" alt="">
+                                          <p id="temp" class="card-text"></p>
+                                          <p id="temp-min" class="card-text"></p>
+                                          <p id="temp-max" class="card-text"></p>
+                                    </div>
+                              </div>
+                        </div>
+                        <div class="btn-group d-flex">
+                              <button id="details" class="card-footer bg-light border-0 rounded-bottom flex-fill">Detalhes</button>
+                              <button id="forecast" class="card-footer bg-light border-0 rounded-bottom flex-fill">Forecast</button>
+                              <button id="fav" class="card-footer bg-light border-0 rounded-bottom flex-fill">Adicionar aos favoritos</button>
+                        </div>
+                  </div>
+            </div>
+      </template>
+
+
+      <!-- Template for when the search is unsuccessful -->
+      <template id="search-result-template-failure">
+            <div class="container py-5 vh-100 d-flex flex-column gap-5 justify-content-center">
+                  <div class="card">
+                        <div class="card-body">
+                              <h5 id="message" class="card-title text-center"></h5>
+                        </div>
+                  </div>
+            </div>
+      </template>
+
+
+
+      <!-- Bootsrap JS -->
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js"
+            integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk"
+            crossorigin="anonymous"></script>
 </body>
 
 </html>
