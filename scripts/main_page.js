@@ -1,7 +1,8 @@
-import WeatherInterface  from './common/weather_interface.js';
+import WeatherInterface  from './common/weatherInterface.js';
 import AppState from './common/state.js';
-import { placeWeatherIcon, convertKelvinToCel } from './common/util.js';
+import { placeWeatherIcon, convertKelvinToCel, convertKelvinToPreferredUnit } from './common/util.js';
 
+// TODO: use HTML templates instead of creating elements manually
 
 // A list of some cities which can be randomly selected to appear on the main page
 const cityList = ['Leiria', 'Lisboa', 'Porto', 'Braga', 'Entroncamento',
@@ -38,22 +39,12 @@ const getRandomCities = (cityCount) => {
 
 
 const setTemperature = (element, appState, temperature) => {
-      if (appState.getUnits() === 'metric') {
-            element.innerHTML = `${convertKelvinToCel(temperature)} ${appState.getPreferredUnitSymbol()}`;
-            return;
-      }
-      
-      element.innerHTML = `${temperature} °F`;
+      element.innerHTML = `${convertKelvinToPreferredUnit(temperature, appState)} ${appState.getPreferredUnitSymbol()}`;
 }
 
 
 const setMinMaxTemperature = (element, appState, maxMin) => {
-      if (appState.getUnits() === 'metric') {
-            element.innerHTML = `${convertKelvinToCel(maxMin[0])} °C / ${convertKelvinToCel(maxMin[1])} °C`;
-            return;
-      }
-
-      element.innerHTML = `${maxMin[0]} °F / ${maxMin[1]} °F`;
+      element.innerHTML = `${convertKelvinToPreferredUnit(maxMin[0], appState)} ${appState.getPreferredUnitSymbol()} / ${convertKelvinToPreferredUnit(maxMin[1], appState)} ${appState.getPreferredUnitSymbol()}`;
 }
 
 
@@ -151,4 +142,23 @@ document.addEventListener('DOMContentLoaded', () => {
                   window.location.href = 'views/forecast.html';
             });
       }
+
+      // Set the change Units button text
+      const btnChangeMetric = document.getElementById('btn-change-metric');
+      if (appState.getUnits() === 'metric') {
+            btnChangeMetric.innerHTML = '°F';
+      } else {
+            btnChangeMetric.innerHTML = '°C';
+      }
+            
+
+      // Add an event listener to the change units button
+      btnChangeMetric.addEventListener('click', () => {
+            // Change the units
+            appState.swapUnits();
+            appState.saveState();
+
+            // Reload the page
+            window.location.reload();
+      });
 });
