@@ -36,7 +36,7 @@ const populateDetailsPage = (cityName, data) => {
 
 document.addEventListener('DOMContentLoaded', () => {
       const appState = new AppState();
-      const cityName = appState.state.currentSearch;
+      const cityName = appState.state.currentDetails;
 
       const weatherInterface = new WeatherInterface();
       const data = weatherInterface.getWeatherNow(cityName);

@@ -15,6 +15,7 @@
       <title>Weather Now</title>
 
       <script type="module" src="scripts/main_page.js"></script>
+      <script type="module" src="scripts/common/common.js"></script>
 </head>
 <body>
       <header>
@@ -50,8 +51,8 @@
                               </ul>
 
                               <!-- Search form with active feedback -->
-                              <form class="d-flex">
-                                    <input class="form-control me-2 ms-2" type="search" placeholder="Cidade" aria-label="Search">
+                              <form id="search-form" class="d-flex">
+                                    <input id="search-box" class="form-control me-2 ms-2" type="search" placeholder="Cidade" aria-label="Search">
                                     <button class="btn btn-outline-secondary" type="submit">Procurar</button>
                               </form>
                         </div>
