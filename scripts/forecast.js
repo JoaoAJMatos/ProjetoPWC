@@ -1,10 +1,11 @@
 // This file is a mess, but JS is a mess by itself, so I'm not even going to bother
 
 import AppState from './common/state.js';
-import WeatherInterface from './common/weather_interface.js';
+import WeatherInterface from './common/weatherInterface.js';
 import { getMonthName, getMonth, getDayOfMonth, convertKelvinToPreferredUnit } from './common/util.js';
 
 // TODO: Make the 5 day forecast work
+// TODO: Refactor all of this mess
 
 const swapForecastRange = (cityName, weatherData, appState) => {
       const forecastRange5days  = document.getElementById('forecast-range-5-days');
@@ -37,9 +38,9 @@ const swapForecastRange = (cityName, weatherData, appState) => {
             card2Header.innerHTML = 'Em 6 horas';
 
             weatherData.then(data => {
-                  card0Info.innerHTML = `${convertKelvinToPreferredUnit(data.list[0].main.temp, appState)} °C`;
-                  card1Info.innerHTML = `${convertKelvinToPreferredUnit(data.list[1].main.temp, appState)} °C`;
-                  card2Info.innerHTML = `${convertKelvinToPreferredUnit(data.list[2].main.temp, appState)} °C`;
+                  card0Info.innerHTML = `${convertKelvinToPreferredUnit(data.list[0].main.temp, appState)} ${appState.getPreferredUnitSymbol()}`;
+                  card1Info.innerHTML = `${convertKelvinToPreferredUnit(data.list[1].main.temp, appState)} ${appState.getPreferredUnitSymbol()}`;
+                  card2Info.innerHTML = `${convertKelvinToPreferredUnit(data.list[2].main.temp, appState)} ${appState.getPreferredUnitSymbol()}`;
             });
       }
       else {
@@ -84,7 +85,7 @@ const populateForecastPage = (cityName, weatherData, appState) => {
             const temperature = WeatherInterface.getTemperature(weather);
 
             temperature.then(temp => {
-                  info.innerHTML = `${convertKelvinToPreferredUnit(temp, appState)} °C`;
+                  info.innerHTML = `${convertKelvinToPreferredUnit(temp, appState)} ${appState.getPreferredUnitSymbol()}`;
             });
       });
 }
@@ -108,4 +109,22 @@ document.addEventListener('DOMContentLoaded', () => {
       });
 
       populateForecastPage(cityName, data, appState);
+
+      // Set the change Units button text
+      const btnChangeMetric = document.getElementById('btn-change-metric');
+      if (appState.getUnits() === 'metric') {
+            btnChangeMetric.innerHTML = '°F';
+      } else {
+            btnChangeMetric.innerHTML = '°C';
+      }
+
+      // Add an event listener to the change units button
+      btnChangeMetric.addEventListener('click', () => {
+            // Change the units
+            appState.swapUnits();
+            appState.saveState();
+
+            // Reload the page
+            window.location.reload();
+      });
 });

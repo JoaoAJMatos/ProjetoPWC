@@ -1,5 +1,5 @@
 import AppState from './common/state.js';
-import WeatherInterface from './common/weather_interface.js';
+import WeatherInterface from './common/weatherInterface.js';
 
 const populateDetailsPage = (cityName, data) => {
       const tittle = document.getElementById('details-tittle');
@@ -42,4 +42,22 @@ document.addEventListener('DOMContentLoaded', () => {
       const data = weatherInterface.getWeatherNow(cityName);
 
       populateDetailsPage(cityName, data);
+
+      // Set the change Units button text
+      const btnChangeMetric = document.getElementById('btn-change-metric');
+      if (appState.getUnits() === 'metric') {
+            btnChangeMetric.innerHTML = '°F';
+      } else {
+            btnChangeMetric.innerHTML = '°C';
+      }
+
+      // Add an event listener to the change units button
+      btnChangeMetric.addEventListener('click', () => {
+            // Change the units
+            appState.swapUnits();
+            appState.saveState();
+
+            // Reload the page
+            window.location.reload();
+      });
 });

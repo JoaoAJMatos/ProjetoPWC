@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootsrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="../style/main.css">
+
+    <link rel="icon" href="../img/logo.svg" type="image/x-icon">
+    <title>Weather Now</title>
+</head>
+
+<body>
+    <header>
+        <!-- Fixed Navbar -->
+        <nav class="navbar navbar-expand-lg bg-light fixed-top">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="../index.html">
+                    <img src="../img/logo.svg" alt="logo" width="30" height="24" class="d-inline-block align-text-top">
+                    Weather Now
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="../index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                              <a class="nav-link" href="./views/forecast.html">Forecast</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="favourites.html">Favoritos</a>
+                        </li>
+                        <li class="nav-item">
+                              <button id="btn-change-metric" class="btn btn-secondary"></button>
+                        </li>
+                    </ul>
+                    <form class="d-flex">
+                        <input class="form-control me-2 ms-2" type="search" placeholder="Cidade" aria-label="Search">
+                        <button class="btn btn-outline-secondary" type="submit">Procurar</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Bootsrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js"
+        integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk"
+        crossorigin="anonymous"></script>
+    
+    <script type="module" src="../scripts/forecast.js"></script>
+</body>
+
+</html>
