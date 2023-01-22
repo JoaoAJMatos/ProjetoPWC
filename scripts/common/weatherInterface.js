@@ -1,4 +1,8 @@
-// Wrapper class for interacting with the OpenWeather API
+/**
+ * @fileoverview This file contains the WeatherInterface class, which can be clasified as a wrapper
+ *              for interacting with the OpenWeatherMap API.
+ */
+
 class WeatherInterface {
       constructor(APIID) {
             this.apiKey    = APIID || "7b6279bb505f54fde5ebc965e13c43de";
@@ -49,7 +53,8 @@ class WeatherInterface {
       }
 
 
-
+      // Returns the minimum and maximum temperatures given an incoming 
+      // API response
       static getMaxMinTemp(data) {
             return data.then(data => {
                   const maxTemp = data["main"]["temp_max"];
@@ -59,14 +64,17 @@ class WeatherInterface {
             });
       }
 
+      // Returns the current temperature given an incoming API response
       static getTemperature(data) {
             return data.then(data => data["main"]["temp"]);
       }
 
+      // Returns the current humidity given an incoming API response
       static getHumidity(data) {
             return data.then(data => data["main"]["humidity"]);
       }
 
+      // Returns the current wind speed and direction given an incoming API response
       static getWindInfo(data) {
             return data.then(data => {
                   const windSpeed = data["wind"]["speed"];
@@ -76,14 +84,17 @@ class WeatherInterface {
             });
       }
 
+      // Returns the current atmospheric pressure given an incoming API response
       static getAtmosphericPressure(data) {
             return data.then(data => data["main"]["pressure"]);
       }
 
+      // Returns the current cloud coverage given an incoming API response
       static getClouds(data) {
             return data.then(data => data["clouds"]["all"]);
       }
 
+      // Returns the current weather description given an incoming API response
       static getCityCoords(data) {
             return data.then(data => {
                   const lat = data["coord"]["lat"];

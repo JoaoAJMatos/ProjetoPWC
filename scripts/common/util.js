@@ -1,7 +1,9 @@
+/**
+ * @fileoverview This file contains a set of utility functions used by multiple files.
+ */
+
 // A dictionary with all the weather states and their corresponding icons
 const weatherIcons = {
-      '01d': 'cloudy-windy.svg',
-      '02d': 'cloudy-night.svg',
       'Clouds': 'img/weather_icons/cloudy-sunny.svg',
       'Fog': 'img/weather_icons/cloudy.svg',
       'Rain': 'img/weather_icons/raining.svg',
@@ -144,4 +146,18 @@ const getUserMetric = (lat, long) => {
 
 
 
-export { timestampToDate, getDayOfMonth, getMonth, getMonthName, convertKelvinToPreferredUnit, convertFarToCel, convertCelToFar, convertKelvinToCel, convertKelvinToFar, placeWeatherIcon, getUserLongLat, getUserCountry, getUserMetric };
+export { 
+      timestampToDate, 
+      getDayOfMonth, 
+      getMonth, 
+      getMonthName, 
+      convertKelvinToPreferredUnit, 
+      convertFarToCel, 
+      convertCelToFar, 
+      convertKelvinToCel, 
+      convertKelvinToFar, 
+      placeWeatherIcon, 
+      getUserLongLat, 
+      getUserCountry, 
+      getUserMetric 
+};

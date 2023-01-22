@@ -1,4 +1,7 @@
-// This file contains the drivers for managing the search form and the change units button.
+/**
+ * @fileoverview This file contains the drivers for some of the common elements of the application.
+ *              These include the search form and the change units button.
+ */
 
 import AppState from './state.js';
 
