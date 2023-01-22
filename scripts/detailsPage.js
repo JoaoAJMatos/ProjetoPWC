@@ -10,25 +10,31 @@ const populateDetailsPage = (cityName, data) => {
       const atmPressure = document.getElementById('atm-pressure');
       const humidity = document.getElementById('humidity');
 
+      // Set the city name
       tittle.textContent = cityName;
 
+      // Set the latitude and longitude
       WeatherInterface.getCityCoords(data).then(coords => {
             lat.textContent = `Lat: ${coords[0]}`;
             lon.textContent = `Lon: ${coords[1]}`;
       });
 
+      // Set the wind speed
       WeatherInterface.getWindInfo(data).then(windInfo => {
             wind.textContent = `Vento: ${windInfo[0]} m/s`;
       });
 
+      // Set the clouds percentage
       WeatherInterface.getClouds(data).then(cloudsInfo => {
             clouds.textContent = `Nuvens: ${cloudsInfo}%`;
       });
 
+      // Set the atmospheric pressure
       WeatherInterface.getAtmosphericPressure(data).then(atmPressureInfo => {
             atmPressure.textContent = `Pressão atmosférica: ${atmPressureInfo} hPa`;
       });
 
+      // Set the humidity percentage
       WeatherInterface.getHumidity(data).then(humidityInfo => {
             humidity.textContent = `Humidade: ${humidityInfo}%`;
       });
@@ -42,22 +48,4 @@ document.addEventListener('DOMContentLoaded', () => {
       const data = weatherInterface.getWeatherNow(cityName);
 
       populateDetailsPage(cityName, data);
-
-      // Set the change Units button text
-      const btnChangeMetric = document.getElementById('btn-change-metric');
-      if (appState.getUnits() === 'metric') {
-            btnChangeMetric.innerHTML = '°F';
-      } else {
-            btnChangeMetric.innerHTML = '°C';
-      }
-
-      // Add an event listener to the change units button
-      btnChangeMetric.addEventListener('click', () => {
-            // Change the units
-            appState.swapUnits();
-            appState.saveState();
-
-            // Reload the page
-            window.location.reload();
-      });
 });
