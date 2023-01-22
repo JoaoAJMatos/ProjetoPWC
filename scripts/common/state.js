@@ -1,7 +1,10 @@
+/**
+ * @fileoverview This file contains the AppState class, which serves as the interface for
+ *              interacting with the application's state stored in the local storage.
+ */
+
 import { getUserLongLat, getUserMetric } from "./util.js";
 
-// This class serves as the interface for interacting with the
-// application's state stored in the local storage.
 class AppState {
       constructor() {
             this.loadState();
@@ -64,6 +67,7 @@ class AppState {
       }
 
 
+      // Clear the list of favorites
       clearFavorites() {
             this.state.favourites = [];
       }
@@ -77,6 +81,8 @@ class AppState {
             this.state.currentSearch = cityName;
       }
 
+      // Sets a city as the current object to display in the details page
+      // Works as the above, but for the details page
       setDetails(cityName) {
             this.state.currentDetails = cityName;
       }
