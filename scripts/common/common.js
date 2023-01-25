@@ -3,7 +3,7 @@
  *              These include the search form and the change units button.
  */
 
-import AppState from './state.js';
+import { AppState } from './state.js';
 
 document.addEventListener('DOMContentLoaded', () => {
       const searchForm = document.getElementById('search-form');

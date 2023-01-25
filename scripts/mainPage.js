@@ -1,5 +1,5 @@
 import WeatherInterface  from './common/weatherInterface.js';
-import AppState from './common/state.js';
+import { AppState } from './common/state.js';
 import { placeWeatherIcon, convertKelvinToPreferredUnit } from './common/util.js';
 
 

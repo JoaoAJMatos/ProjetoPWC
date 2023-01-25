@@ -1,4 +1,4 @@
-import AppState from './common/state.js';
+import { AppState } from './common/state.js';
 import WeatherInterface from './common/weatherInterface.js';
 
 const populateDetailsPage = (cityName, data) => {

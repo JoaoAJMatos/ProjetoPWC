@@ -5,6 +5,9 @@
 
 import { getUserLongLat, getUserMetric } from "./util.js";
 
+const FORECAST_3_HOURS = 0;
+const FORECAST_5_DAYS  = 1;
+
 class AppState {
       constructor() {
             this.loadState();
@@ -26,7 +29,10 @@ class AppState {
 
             // If the user's current search is not set, set it to an empty string
             if (!this.state.currentSearch) this.state.currentSearch = "";
-            if(!this.state.currentDetails) this.state.currentDetails = "";
+            if (!this.state.currentDetails) this.state.currentDetails = "";
+
+            // If the user's prefered forecast range is not set, set it to 3 hours (default)
+            if (!this.state.forecastRange) this.state.forecastRange = FORECAST_3_HOURS;
       }
 
 
@@ -113,6 +119,22 @@ class AppState {
 
             return "ºF";
       }
+
+
+      // Swaps the forecast range between 3 hours and 5 days
+      swapForecastRange() {
+            if (this.state.forecastRange === FORECAST_3_HOURS) {
+                  this.state.forecastRange = FORECAST_5_DAYS;
+                  return;
+            }
+
+            this.state.forecastRange = FORECAST_3_HOURS;
+      }
+
+
+      getPreferredForecastRange() {
+            return this.state.forecastRange;
+      }
 }
 
-export default AppState;
+export { AppState, FORECAST_3_HOURS, FORECAST_5_DAYS };

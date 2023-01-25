@@ -18,24 +18,11 @@ const weatherIcons = {
 const countriesUsingImperial = ['United States', 'Liberia', 'Myanmar'];
 
 
-/* ================= TIME UTILITIES ================= */
+/* ================= DATE/TIME UTILITIES ================= */
 
-// Converts a Unix timestamp to a local date
+// Converts a given timestamp to a Date object
 const timestampToDate = (timestamp) => {
-      const date = new Date(timestamp * 1000);
-      return date.toLocaleDateString();
-}
-
-// Get the current day of the month
-const getDayOfMonth = () => {
-      const date = new Date();
-      return date.getDate();
-}
-
-// Get the current month
-const getMonth = () => {
-      const date = new Date();
-      return date.getMonth();
+      return new Date(timestamp * 1000);
 }
 
 // Get the corresponding name of a given month
@@ -45,6 +32,33 @@ const getMonthName = (month) => {
 
       return months[month];
 }
+
+// Returns the current day of the month
+const getCurrentMonthDay = () => {
+      const date = new Date();
+      return date.getDate();
+};
+
+// Returns the date and time formatted as HH:MM Month Day
+// This is an aditional requirement for the project
+const getFormattedDate = (timestamp) => {
+      const date = new Date(timestamp * 1000);
+      const hours = date.getHours();
+      const minutes = date.getMinutes();
+      const month = getMonthName(date.getMonth());
+      const day = date.getDate();
+
+      return `${hours}:${minutes} ${month.substring(0, 3)} ${day}`; // We only need the first 3 letters of the month
+}
+
+// Returns the month and the day from a given timestamp as a string
+const getMonthDayFromTimestamp = (timestamp) => {
+      const date = new Date(timestamp * 1000);
+      const month = getMonthName(date.getMonth());
+      const day = date.getDate();
+
+      return `${month} ${day}`;
+};
 
 
 
@@ -107,6 +121,7 @@ const placeWeatherIcon = (weatherAPIResp, element, isMainPage) => {
 
 /* ============== GEOLOCATION UTILITIES ============== */
 
+// TODO: Change the name of this function to getUserCoordinates
 // Returns the user's longitude and latitude
 const getUserLongLat = () => {
       return new Promise((resolve, reject) => {
@@ -145,11 +160,11 @@ const getUserMetric = (lat, long) => {
 }
 
 
-
-export { 
-      timestampToDate, 
-      getDayOfMonth, 
-      getMonth, 
+export {
+      getFormattedDate,
+      getMonthDayFromTimestamp,
+      getCurrentMonthDay,
+      timestampToDate,
       getMonthName, 
       convertKelvinToPreferredUnit, 
       convertFarToCel, 
