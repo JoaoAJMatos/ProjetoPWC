@@ -36,6 +36,40 @@ const getRandomCities = (cityCount) => {
       return cities;
 }
 
+// Sets the event listeners for a weather card for a given city
+const setCardEventListeners = (appState, city, displayedCities) => {
+      // Get the buttons for the current city card
+      const btnDetails   = document.getElementById(`btn-details-${city}`);
+      const btnFavourite = document.getElementById(`btn-fav-${city}`);
+      const btnForecast  = document.getElementById(`btn-forecast-${city}`);
+
+      // Add an event listener to the details button
+      btnDetails.addEventListener('click', () => {
+            appState.setSearch(city);
+            appState.saveState();
+
+            window.location.href = '/views/searchResult.html';
+      });
+
+      // Add an event listener to the favourite button
+      btnFavourite.addEventListener('click', () => {
+            const favs = appState.getFavorites();
+
+            if (favs.includes(city)) {
+                  // Remove the city from the favourites
+                  btnFavourite.innerHTML = '🤍';
+                  appState.removeFavorite(city);
+            } else {
+                  // Add the city to the favourites
+                  appState.setFavorite(city);
+                  btnFavourite.innerHTML = '❤️';
+            }
+
+            // Save the app state
+            appState.saveState();
+      });
+}
+
 
 // Places the weather card templates on the main page
 const placeWeatherCards = (cities, weatherInterface, appState) => {
@@ -86,6 +120,19 @@ const placeWeatherCards = (cities, weatherInterface, appState) => {
                   container = document.getElementById('weather-cards-second-half');
                   container.appendChild(weatherCard);
             }
+
+            // Get the buttons for the current city card
+            const btnDetails   = document.getElementById('btn-details');
+            const btnFavourite = document.getElementById('btn-fav');
+            const btnForecast  = document.getElementById('btn-forecast');
+      
+            // Change the buttons IDs
+            btnDetails.id   = `btn-details-${city}`;
+            btnFavourite.id = `btn-fav-${city}`;
+            btnForecast.id  = `btn-forecast-${city}`;
+
+            // Set the event listeners for the current weather card
+            setCardEventListeners(appState, city, cities);
 
             index++;
       });
