@@ -37,16 +37,6 @@ const getRandomCities = (cityCount) => {
 }
 
 
-const setTemperature = (element, appState, temperature) => {
-      element.innerHTML = `${convertKelvinToPreferredUnit(temperature, appState)} ${appState.getPreferredUnitSymbol()}`;
-}
-
-
-const setMinMaxTemperature = (element, appState, maxMin) => {
-      element.innerHTML = `${convertKelvinToPreferredUnit(maxMin[0], appState)} ${appState.getPreferredUnitSymbol()} / ${convertKelvinToPreferredUnit(maxMin[1], appState)} ${appState.getPreferredUnitSymbol()}`;
-}
-
-
 // Places the weather card templates on the main page
 const placeWeatherCards = (cities, weatherInterface, appState) => {
       const template = document.getElementById('template-weather-card');
@@ -79,12 +69,12 @@ const placeWeatherCards = (cities, weatherInterface, appState) => {
 
             // Set the temperature
             WeatherInterface.getTemperature(weatherData).then(temperature => {
-                  setTemperature(cityCardTemperature, appState, temperature);
+                  cityCardTemperature.innerHTML = `${convertKelvinToPreferredUnit(temperature, appState)} ${appState.getPreferredUnitSymbol()}`;
             });
 
             // Set the max and min temperature
             WeatherInterface.getMaxMinTemp(weatherData).then(maxMin => {
-                  setMinMaxTemperature(cityCardMaxMin, appState, maxMin);
+                  cityCardMaxMin.innerHTML = `${convertKelvinToPreferredUnit(maxMin[0], appState)} ${appState.getPreferredUnitSymbol()} / ${convertKelvinToPreferredUnit(maxMin[1], appState)} ${appState.getPreferredUnitSymbol()}`;
             });
 
             // Append the weather card to the container
