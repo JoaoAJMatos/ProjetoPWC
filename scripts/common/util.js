@@ -49,7 +49,8 @@ const getFormattedDate = (timestamp) => {
       const day = date.getDate();
 
       return `${hours}:${minutes} ${month.substring(0, 3)} ${day}`; // We only need the first 3 letters of the month
-}
+};
+
 
 // Returns the month and the day from a given timestamp as a string
 const getMonthDayFromTimestamp = (timestamp) => {

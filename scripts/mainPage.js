@@ -1,6 +1,6 @@
 import WeatherInterface  from './common/weatherInterface.js';
 import { AppState } from './common/state.js';
-import { placeWeatherIcon, convertKelvinToPreferredUnit } from './common/util.js';
+import { placeWeatherIcon, convertKelvinToPreferredUnit, getFormattedDate } from './common/util.js';
 
 
 // A list of some cities which can be randomly selected to appear on the main page
@@ -95,10 +95,18 @@ const placeWeatherCards = (cities, weatherInterface, appState) => {
 
             // Get the elements for the current city card
             const cityCard = weatherCard.getElementById(`city`);
-            const cityCardTitle = cityCard.children[0];
-            const cityCardIcon = cityCard.children[1];
-            const cityCardTemperature = cityCard.children[2];
+
+            // TODO: This is a very hacky way of doing this. Should probably be changed later
+            const datetime = cityCard.children[0];
+            const cityCardTitle = cityCard.children[1];
+            const cityCardIcon = cityCard.children[2];
+            const cityCardTemperature = cityCard.children[3];
             const cityCardMaxMin = cityCard.children[4];
+
+            // Set the date and time (just to use the date fromat in the project extras lol)
+            weatherData.then(data => {
+                  datetime.innerHTML = getFormattedDate(data.dt + data.timezone);
+            });
 
             // Set the city name and the id of the card
             cityCardTitle.innerHTML = city;
