@@ -2,10 +2,11 @@ import WeatherInterface  from './common/weatherInterface.js';
 import AppState from './common/state.js';
 import { placeWeatherIcon, convertKelvinToPreferredUnit } from './common/util.js';
 
+
 // A list of some cities which can be randomly selected to appear on the main page
 const cityList = ['Dubai', 'Toronto', 'Madrid', 'Lisbon', 'Rio de Janeiro',
                   'Porto', 'Leeds', 'Manchester', 'Barcelona', 'Sao Paulo',
-                  'Luanda', 'Cairo', 'Entroncemento', 'Leiria', 'Coimbra',
+                  'Luanda', 'Cairo', 'Entroncamento', 'Leiria', 'Coimbra',
                   'Paris', 'Berlin',  'Munich'
 ];
 
@@ -46,22 +47,30 @@ const setMinMaxTemperature = (element, appState, maxMin) => {
 }
 
 
-const populateWeatherCards = (cities, weatherInterface, appState) => {
+// Places the weather card templates on the main page
+const placeWeatherCards = (cities, weatherInterface, appState) => {
+      const template = document.getElementById('template-weather-card');
+      let   container = document.getElementById('weather-cards-first-half');
+
       let index = 0, weatherData;
 
       cities.forEach(city => {
             // Get the weather data for the current city
             weatherData = weatherInterface.getWeatherNow(city);
 
+            // Create a new weather card
+            const weatherCard = document.importNode(template.content, true);
+
             // Get the elements for the current city card
-            const cityCard = document.getElementById(`city${index}`);
+            const cityCard = weatherCard.getElementById(`city`);
             const cityCardTitle = cityCard.children[0];
             const cityCardIcon = cityCard.children[1];
             const cityCardTemperature = cityCard.children[2];
             const cityCardMaxMin = cityCard.children[4];
 
-            // Set the city name
+            // Set the city name and the id of the card
             cityCardTitle.innerHTML = city;
+            cityCard.id = `${city}`;
 
             // Set the weather icon
             placeWeatherIcon(weatherData, cityCardIcon, true);
@@ -77,7 +86,17 @@ const populateWeatherCards = (cities, weatherInterface, appState) => {
             WeatherInterface.getMaxMinTemp(weatherData).then(maxMin => {
                   setMinMaxTemperature(cityCardMaxMin, appState, maxMin);
             });
-            
+
+            // Append the weather card to the container
+            // If the index is less than 3, append to the first container
+            // Otherwise, append to the second container
+            if (index < 3) {
+                  container.appendChild(weatherCard);
+            } else {
+                  container = document.getElementById('weather-cards-second-half');
+                  container.appendChild(weatherCard);
+            }
+
             index++;
       });
 }
@@ -95,9 +114,11 @@ document.addEventListener('DOMContentLoaded', () => {
       const appState = new AppState();
 
       // Populate the weather cards with data from the random cities
-      populateWeatherCards(randomCities, weatherInterface, appState);
+      //populateWeatherCards(randomCities, weatherInterface, appState);
+      placeWeatherCards(randomCities, weatherInterface, appState);
 
       // Set the IDs of the details buttons to the city names
+      /*
       for (let i = 0; i < randomCities.length; i++) {
             document.getElementById(`detalhes${i}`).id = randomCities[i];
             document.getElementById(`fav${i}`).id = `fav_${randomCities[i]}`;
@@ -139,5 +160,5 @@ document.addEventListener('DOMContentLoaded', () => {
                   // Redirect to the forecast page
                   window.location.href = 'views/forecast.html';
             });
-      }
+      }*/
 });
