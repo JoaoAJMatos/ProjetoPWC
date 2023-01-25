@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
             appState.saveState();
       
             // Redirect to the search results page
-            window.location.href = '/views/search-res.html';
+            window.location.href = '/views/searchResult.html';
       });
       
       
