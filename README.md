@@ -22,6 +22,18 @@ Weather Now is a simple weather website built on top of the [OpenWeatherMap API]
 
 <br>
 
+## Running
+
+Given the CORS policies of some browsers, we were having problems loading local JS files. To solve this, we created a simple Python script that launches a web server and opens the browser automatically on the website. To start the server,
+run the following command:
+
+```bash
+python start.py
+```
+
+Alternatively, you can simply launch a live server instance within VSCode or any other IDE that supports it.
+
+
 ### Contribuiting guidelines for group members
 
 To contribute to the project, follow the developer notes on contribuiting [here](CONTRIBUITING.md).
