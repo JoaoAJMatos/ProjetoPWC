@@ -9,9 +9,8 @@ Weather Now is a simple weather website built on top of the [OpenWeatherMap API]
 
 <br>
 
-### Screenshots
-
 <div align="center">
+      <h3>Screenshots</h3>
       <img src="img/screenshots/mainPage.png" alt="Weather Now Screenshot" width="600"/>
       <br>
       <img src="img/screenshots/details.png" alt="Weather Now Screenshot" width="600"/>
@@ -26,3 +25,8 @@ Weather Now is a simple weather website built on top of the [OpenWeatherMap API]
 ### Contribuiting guidelines for group members
 
 To contribute to the project, follow the developer notes on contribuiting [here](CONTRIBUITING.md).
+
+
+### License
+
+This project is licensed under the MIT License - check out the [LICENSE](LICENSE.md) file for details.
